@@ -2,10 +2,11 @@ def longest_substring_with_distint_chars(str):
     windowStart, result = 0, 0
     chars = {}
     for windowEnd in range (0, len(str)):
-        print(chars)
         rightChar = str[windowEnd]
         if rightChar in chars:
+            #set start of window to 1 index after the first location of the duplicate char
             windowStart = max(windowStart, chars[rightChar] + 1)
+        #add index of char to map
         chars[rightChar] = windowEnd
         result = max(result, windowEnd - windowStart + 1)
     return result
